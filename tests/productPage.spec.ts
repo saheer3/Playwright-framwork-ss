@@ -4,6 +4,7 @@ import {ProductPage} from '../pages/ProductPage';
 import { LoginPage } from '../pages/LoginPage';
 import {LoginPageLocators} from '../locators/LoginPageLocators';
 import {ProductPageLocators} from '../locators/ProductPageLocators';
+import {productsToCart} from '../test-data/products.ts'
 
 
 test.describe('Product page validation',()=>
@@ -30,6 +31,25 @@ test.describe('Product page validation',()=>
             await page.goBack();
             await expect(page.locator(ProductPageLocators.aboutlink)).toBeVisible();
         })
+
+        test('Validate product details',async({page})=>{
+            await productPage.validateProductsDetails();
+        })
+
+        test('Add first product to the cart',async({page})=>{
+            await productPage.validateProductsDetails();
+        })
+
+
+        test('Add all product to the cart',async({page})=>{
+            await productPage.addAllProductToCart();
+        })
+
+        test.only('Add specific product to the cart',async({page})=>{
+            console.log("Test")
+            await productPage.addSpecificProductsToCart(productsToCart);
+        })
+
 
 
 })
