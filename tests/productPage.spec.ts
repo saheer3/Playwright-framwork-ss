@@ -16,6 +16,7 @@ test.describe('Product page validation',()=>
             productPage = new ProductPage(page);
             await page.goto(BASE_URL);
             await loginPage.login(USERNAME,PASSWORD);
+            console.log("Checking CICD main branch push")
         })
 
         test('Logout from the application',async({page})=>{
