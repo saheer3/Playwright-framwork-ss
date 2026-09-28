@@ -17,3 +17,10 @@ steps:
   displayName: 'Run Playwright tests'
   env:
     CI: 'true'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'playwright-report'
+    artifact: 'playwright-report'
+    publishLocation: 'pipeline'
+  condition: succeededOrFailed()
+  
