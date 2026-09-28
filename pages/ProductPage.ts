@@ -44,7 +44,7 @@ export class ProductPage{
         const buttons =await this.page.locator(ProductPageLocators.AddtoCartButton);
         for(let i=0; i<count;i++){
             await buttons.nth(i).click();
-            await this.page.waitForTimeout(5000);
+            // await this.page.waitForTimeout(5000);
         }
     }
 
@@ -57,7 +57,7 @@ export class ProductPage{
             if(name && productName.includes(name.trim()))
             {
                 await this.page.locator(ProductPageLocators.AddtoCartButton).nth(i).click();
-                await this.page.waitForTimeout(3000);
+                // await this.page.waitForTimeout(3000);
             }
         }
 
