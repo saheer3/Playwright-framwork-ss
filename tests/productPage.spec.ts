@@ -4,7 +4,7 @@ import {ProductPage} from '../pages/ProductPage';
 import { LoginPage } from '../pages/LoginPage';
 import {LoginPageLocators} from '../locators/LoginPageLocators';
 import {ProductPageLocators} from '../locators/ProductPageLocators';
-import {productsToCart} from '../test-data/product.ts'
+import {productsToCart} from '../test-data/products.ts'
 
 
 test.describe('Product page validation',()=>
@@ -45,6 +45,7 @@ test.describe('Product page validation',()=>
         })
 
         test.only('Add specific product to the cart',async({page})=>{
+            console.log("Test")
             await productPage.addSpecificProductsToCart(productsToCart);
         })
 

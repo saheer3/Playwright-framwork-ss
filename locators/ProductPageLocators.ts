@@ -8,4 +8,5 @@ export const ProductPageLocators={
     ProductDesc: '.inventory_item_desc',
     ProductPrice:'.inventory_item_price',
     AddtoCartButton:'.btn_inventory',
+    
 }

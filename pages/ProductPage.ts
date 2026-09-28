@@ -57,7 +57,7 @@ export class ProductPage{
             if(name && productName.includes(name.trim()))
             {
                 await this.page.locator(ProductPageLocators.AddtoCartButton).nth(i).click();
-                await this.page.waitForTimeout(5000);
+                await this.page.waitForTimeout(3000);
             }
         }
 
