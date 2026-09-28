@@ -23,4 +23,10 @@ steps:
     artifact: 'playwright-report'
     publishLocation: 'pipeline'
   condition: succeededOrFailed()
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/e2e-*.xml'
+  condition: succeededOrFailed()
   
