@@ -29,11 +29,30 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests 
+      - name: Run Playwright tests (shard=${{ matrix.shard }}/4)
         run: npx playwright test --shard=${{ matrix.shard }}/4
 
-      - name: Run Smoke Tests shard=${{ matrix.shard }}/4
-        run: npx playwright test tests/Smoke
+      - name: Upload Allure results (shard=${{ matrix.shard }}/4)
+        uses: actions/upload-artifact@v4
+        with: 
+          name: allure-results-shard-${{ matrix.shard }}
+          path: allure-results
+
+
+  merge-allure-report:
+    needs: playwright-test
+    if: always()
+    runs-on:  ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      #- name: Run Smoke Tests shard=${{ matrix.shard }}/4
+      #  run: npx playwright test tests/Smoke
+
+      #- name: Run Regression Tests shard=${{ matrix.shard }}/4
+      #  run: npx playwright test tests/Regression
 
       - name: Upload Playwright Report
         if: always()
